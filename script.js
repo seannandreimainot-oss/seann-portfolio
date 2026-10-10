@@ -15,6 +15,7 @@ const projectEntries=[
  ['ugc','CqwSUPbRGPA','UGC SAMPLE EDIT #2',true],
  ['ugc','mr0Qm90ae9k','UGC SAMPLE EDIT #3',true],
  ['ugc','eqrnIkmQiq8','UGC SAMPLE EDIT 1',true],
+ ['music','ryezsRWBeyE','MANNA HONNEY 10 MINS AI MUSIC',false],
  ['music','YsWOVcI8QAY','MY WIFE CHEATED ME',false],
  ['music','Y9lKnJ3lWtQ','EVERWELNESS BLACK',true],
  ['pixar','DtSyOSfgnzI','GYM COACH WORKOUT',true],
@@ -26,6 +27,8 @@ const projectEntries=[
  ['avatar','TB-oLnZ9Ys8','TEA',true],
  ['avatar','96oG0tcf51A','FILLET TREATS',true],
  ['avatar','8KI5LRuIeNQ','LIVER TREATS',true],
+ ['film','q35K3N_vc1k','COFFIN',false],
+ ['film','YY4Nb0dJ7HY','SOBER',false],
  ['film','jym6G9aozyI','REVENGE',false],
  ['clay','fAH0DcauyVI','BOSTIK VULCASEAL',true]
 ];
