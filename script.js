@@ -27,6 +27,8 @@ const projectEntries=[
  ['avatar','TB-oLnZ9Ys8','TEA',true],
  ['avatar','96oG0tcf51A','FILLET TREATS',true],
  ['avatar','8KI5LRuIeNQ','LIVER TREATS',true],
+ ['film','NWGV_omnVNk','COFFIN',false],
+ ['film','JTwSd64o74s','SOBER',false],
  ['film','jym6G9aozyI','REVENGE',false],
  ['clay','fAH0DcauyVI','BOSTIK VULCASEAL',true]
 ];
