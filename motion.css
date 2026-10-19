@@ -1,0 +1,100 @@
+/* ===== Motion layer (pairs with motion.js) ===== */
+html{scroll-padding-top:96px}
+
+/* Sticky glass header that tucks away on scroll-down */
+.header{position:sticky;top:0;z-index:60;transition:translate .45s var(--motion-ease),padding .35s var(--motion-ease),border-color .35s}
+.header:before{content:'';position:absolute;inset:0 calc(50% - 50vw);z-index:-1;background:color-mix(in srgb,var(--surface) 94%,transparent);backdrop-filter:saturate(1.6) blur(14px);-webkit-backdrop-filter:saturate(1.6) blur(14px);opacity:0;transition:opacity .35s,box-shadow .35s}
+.header.is-scrolled:before{opacity:1;box-shadow:0 10px 30px #1718110f}
+.header.is-scrolled{border-color:transparent}
+.header.is-hidden{translate:0 -110%}
+nav>a.is-active:not(.pill):after{transform:scaleX(1)}
+
+/* Scroll progress + back-to-top */
+.scroll-progress{position:fixed;inset:0 0 auto;height:3px;z-index:80;background:var(--yellow);transform:scaleX(0);transform-origin:left;pointer-events:none}
+.back-top{position:fixed;right:22px;bottom:22px;z-index:70;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--yellow);font:900 20px 'Nunito',sans-serif;box-shadow:0 12px 30px #17181140;opacity:0;scale:.6;translate:0 20px;pointer-events:none;transition:opacity .4s,scale .5s cubic-bezier(.34,1.56,.64,1),translate .5s var(--motion-ease)}
+.back-top.is-visible{opacity:1;scale:1;translate:0 0;pointer-events:auto}
+.back-top:hover span{animation:nudge-up .7s ease infinite}
+.back-top svg{position:absolute;inset:0;width:100%;height:100%;rotate:-90deg}
+.back-top circle{fill:none;stroke-width:3}.back-top .track{stroke:#ffffff22}.back-top .meter{stroke:var(--yellow);stroke-linecap:round}
+html[data-theme=dark] .back-top{background:var(--yellow);color:var(--ink)}html[data-theme=dark] .back-top .meter{stroke:var(--ink)}html[data-theme=dark] .back-top .track{stroke:#17181122}
+@keyframes nudge-up{50%{translate:0 -4px}}
+
+/* Ripple + click burst */
+.has-ripple{overflow:hidden;isolation:isolate}
+.ripple{position:absolute;border-radius:50%;pointer-events:none;background:currentColor;mix-blend-mode:soft-light;z-index:3}
+.pill.yellow .ripple,.service-chip .ripple,.gallery-bottom .ripple,.steps button[aria-selected=true] .ripple{background:#fff;mix-blend-mode:normal;opacity:.5}
+.project-card .ripple{background:var(--yellow);mix-blend-mode:normal}
+.click-ring,.click-spark{position:fixed;z-index:9999;pointer-events:none;border-radius:50%}
+.click-ring{width:56px;height:56px;border:2px solid var(--yellow)}
+.click-spark{box-shadow:0 0 0 1px #ffffff40}
+
+/* Cursor follower (desktop pointers only — added by JS) */
+.cursor-ring,.cursor-dot{position:fixed;left:0;top:0;z-index:9998;pointer-events:none;border-radius:50%;opacity:0;transition:opacity .3s}
+body.cursor-on .cursor-ring,body.cursor-on .cursor-dot{opacity:1}
+.cursor-dot{width:6px;height:6px;margin:-3px 0 0 -3px;background:var(--yellow);box-shadow:0 0 0 1.5px var(--ink)}
+.cursor-ring{width:38px;height:38px;margin:-19px 0 0 -19px;border:1.5px solid var(--ink);display:grid;place-items:center;transition:opacity .3s,width .35s var(--motion-ease),height .35s var(--motion-ease),margin .35s var(--motion-ease),background .3s,border-color .3s}
+html[data-theme=dark] .cursor-ring{border-color:var(--yellow)}
+.cursor-ring.is-hover{width:58px;height:58px;margin:-29px 0 0 -29px;background:#ffcb0526;border-color:var(--yellow)}
+.cursor-ring.is-play{width:84px;height:84px;margin:-42px 0 0 -42px;background:var(--yellow);border-color:var(--yellow)}
+.cursor-ring.is-down{width:28px;height:28px;margin:-14px 0 0 -14px}
+.cursor-label{font:800 12px 'DM Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);opacity:0;transition:opacity .2s}
+.cursor-ring.is-play .cursor-label{opacity:1}
+.cursor-ring.is-play~.cursor-dot{opacity:0}
+
+/* Hero headline word reveal */
+.hero h1.split .w{display:inline-block;background:none!important;animation:word-in .9s calc(.15s + var(--i)*.075s) cubic-bezier(.22,1,.36,1) both}
+.hero h1 > span{display:inline-block}
+@keyframes word-in{from{opacity:0;transform:translateY(.55em) rotate(4deg);filter:blur(8px)}to{opacity:1;transform:none;filter:blur(0)}}
+.hero h1.split > span{background-repeat:no-repeat;animation:mark-in .8s 1s cubic-bezier(.65,0,.35,1) both}
+@keyframes mark-in{from{background-size:0% 100%}to{background-size:100% 100%}}
+
+/* Crafts ticker between hero and work */
+.ticker{overflow:hidden;background:var(--ink);color:var(--yellow);margin-block:6px 34px;rotate:-1.2deg;width:104%;margin-left:-2%;padding-block:15px;user-select:none}
+html[data-theme=dark] .ticker{background:var(--yellow);color:var(--ink)}
+.ticker-track{display:flex;width:max-content;animation:ticker 32s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker-group{display:flex;align-items:center;gap:34px;padding-right:34px;font:1000 clamp(20px,2.6vw,32px)/1 'Nunito',sans-serif;letter-spacing:-.02em;white-space:nowrap}
+.ticker-group i{font-style:normal;font-size:.6em;opacity:.8}
+@keyframes ticker{to{transform:translateX(-50%)}}
+
+/* Tilt + glare surfaces */
+.glare{position:relative}
+.glare:before{content:'';position:absolute;inset:0;z-index:3;border-radius:inherit;pointer-events:none;background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),#ffffff55,transparent 55%);opacity:0;transition:opacity .4s;mix-blend-mode:overlay}
+.glare.is-tilting:before{opacity:1}
+.portrait-art{perspective:900px}.portrait-art>img{transition:transform .2s ease-out}
+.process-board{transition:transform .2s ease-out,box-shadow .4s;transform-style:preserve-3d}
+.process-board.is-tilting{box-shadow:16px 18px 0 var(--border)}
+
+/* Active carousel card: lift + light that follows the pointer */
+.project-card.current:hover{box-shadow:0 30px 60px #5947006b}
+.project-card.current:after{background:radial-gradient(circle at var(--gx,50%) var(--gy,30%),#ffffff40,transparent 60%);opacity:0;mix-blend-mode:overlay;transition:opacity .4s}
+.project-card.current:hover:after{opacity:1}
+.project-card.current .card-circle{animation:pulse-ring 2.2s ease-out infinite}
+@keyframes pulse-ring{0%{box-shadow:0 0 0 0 #ffcb0599}70%{box-shadow:0 0 0 16px #ffcb0500}100%{box-shadow:0 0 0 0 #ffcb0500}}
+.craft-thumbnail{transition:scale .7s var(--motion-ease)}
+.project-card.current:hover .craft-thumbnail{scale:1.07}
+
+/* Small details */
+.name-card{transition:transform .4s var(--motion-ease),box-shadow .4s}.name-card:hover{transform:translate(-3px,-3px);box-shadow:9px 10px 0 var(--yellow)}
+.skills span{transition:background .25s,color .25s,border-color .25s,transform .3s var(--motion-ease)}.skills span:hover{background:var(--yellow);color:var(--ink);border-color:var(--yellow);transform:translateY(-3px) rotate(-2deg)}
+.step-mark{transition:transform .4s cubic-bezier(.34,1.56,.64,1)}.step-panel:hover .step-mark{transform:rotate(-8deg) scale(1.08)}
+.footer-links a:not(.pill){transition:color .25s,translate .3s var(--motion-ease)}.footer-links a:not(.pill):hover{color:var(--yellow);translate:6px 0}
+.contact-footer h2 span{display:inline-block;color:var(--yellow)!important}
+.contact-footer h2:hover span{animation:bounce .6s cubic-bezier(.34,1.56,.64,1)}
+@keyframes bounce{40%{transform:translateY(-18px)}}
+dialog::backdrop{animation:fade-in .35s ease both}
+dialog.is-closing::backdrop{animation:fade-out .26s ease both}
+@keyframes fade-in{from{opacity:0}}@keyframes fade-out{to{opacity:0}}
+
+/* Theme wipe (View Transitions) */
+.theme-wipe::view-transition-old(root),.theme-wipe::view-transition-new(root){animation:none;mix-blend-mode:normal}
+.theme-wipe::view-transition-new(root){z-index:2}
+#theme-icon{display:inline-block;transition:rotate .6s cubic-bezier(.34,1.56,.64,1)}
+html[data-theme=dark] #theme-icon{rotate:360deg}
+
+@media(max-width:700px){.back-top{right:14px;bottom:14px;width:48px;height:48px}.ticker{margin-bottom:24px;padding-block:12px}}
+@media(prefers-reduced-motion:reduce){
+  .ticker-track,.project-card.current .card-circle,.hero h1 > span{animation:none!important}
+  .header.is-hidden{translate:none}
+  .cursor-ring,.cursor-dot{display:none}
+}
