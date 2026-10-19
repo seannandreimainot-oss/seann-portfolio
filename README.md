@@ -39,7 +39,7 @@ No installation or build command is required. All website asset paths are relati
 - `index.html`: name, introductory text, portrait reference, and contact details.
 - `script.js`: YouTube videos in `projectEntries`, categories, process content, and tools.
 - `styles.css`: colors, layout, responsive sizing, and animation.
-- `motion.css` / `motion.js`: click ripples and bursts, cursor follower, magnetic buttons, scroll reveals, tilt, theme wipe, sticky header, and the crafts ticker. Delete both files (and their two tags in `index.html`) to turn the motion layer off.
+- `motion.css` / `motion.js`: click ripples and bursts, cursor follower, magnetic buttons, scroll reveals, tilt, theme wipe, and the sticky header. Delete both files (and their two tags in `index.html`) to turn the motion layer off.
 - `assets/`: portrait and tool images.
 
 Videos are embedded from YouTube; no video files need to be uploaded. YouTube players and thumbnails, and Google Fonts, require an internet connection.
